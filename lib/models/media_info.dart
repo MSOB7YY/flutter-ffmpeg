@@ -50,10 +50,7 @@ class MIFormat {
   });
 
   factory MIFormat.fromMap(Map<dynamic, dynamic> json) => MIFormat(
-        duration: json["duration"] == null
-            ? null
-            : Duration(
-                milliseconds: ((json["duration"] as double) * 1000).round()),
+        duration: (json["duration"] as String?).getDuration(),
         startTime: json["start_time"],
         bitRate: json["bit_rate"],
         filename: json["filename"],
@@ -257,10 +254,7 @@ class MIStream {
         startPts: json["start_pts"],
         channelLayout: json["channel_layout"],
         durationTs: json["duration_ts"],
-        duration: json["duration"] == null
-            ? null
-            : Duration(
-                milliseconds: ((json["duration"] as double) * 1000).round()),
+        duration: (json["duration"] as String?).getDuration(),
         bitRate: json["bit_rate"],
         codecTagString: json["codec_tag_string"],
         avgFrameRate: json["avg_frame_rate"],
@@ -350,4 +344,17 @@ class MIStreamTags {
         "handler_name": handlerName,
         "language": language,
       };
+}
+
+extension _StringToDuration on String? {
+  Duration? getDuration() {
+    Duration? dur;
+    if (this != null) {
+      final parsed = double.tryParse(this!);
+      if (parsed != null) {
+        dur = Duration(milliseconds: (parsed * 1000).round());
+      }
+    }
+    return dur;
+  }
 }

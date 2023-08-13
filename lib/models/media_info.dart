@@ -125,7 +125,7 @@ class MIFormatTags {
     this.compatibleBrands,
   });
 
-  factory MIFormatTags.fromMap(Map<String, dynamic> json) => MIFormatTags(
+  factory MIFormatTags.fromMap(Map<dynamic, dynamic> json) => MIFormatTags(
         date: json["date"],
         language: json["LANGUAGE"],
         artist: json["artist"],
@@ -150,7 +150,7 @@ class MIFormatTags {
         compatibleBrands: json["compatible_brands"],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<dynamic, dynamic> toMap() => {
         "date": date,
         "LANGUAGE": language,
         "artist": artist,
@@ -306,7 +306,7 @@ class MIStream {
         "tags": tags?.toMap(),
         "start_time": startTime,
         "disposition": Map.from(disposition!)
-            .map((k, v) => MapEntry<String, dynamic>(k, v)),
+            .map((k, v) => MapEntry<dynamic, dynamic>(k, v)),
         "codec_tag": codecTag,
         "sample_rate": sampleRate,
         "channels": channels,

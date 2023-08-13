@@ -99,6 +99,7 @@ class MIFormatTags {
   final String? comment;
   final String? disc;
   final String? track;
+  final String? lyrics;
   final String? lyricist;
   final String? compatibleBrands;
 
@@ -122,6 +123,7 @@ class MIFormatTags {
     this.comment,
     this.disc,
     this.track,
+    this.lyrics,
     this.lyricist,
     this.compatibleBrands,
   });
@@ -146,6 +148,7 @@ class MIFormatTags {
         comment: json["comment"],
         disc: json["disc"],
         track: json["track"],
+        lyrics: json["lyrics"],
         lyricist: json["LYRICIST"],
         compatibleBrands: json["compatible_brands"],
       );
@@ -170,6 +173,7 @@ class MIFormatTags {
         "comment": comment,
         "disc": disc,
         "track": track,
+        "lyrics": lyrics,
         "LYRICIST": lyricist,
         "compatible_brands": compatibleBrands,
       };

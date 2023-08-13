@@ -17,16 +17,15 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class Statistics {
-  int executionId;
-  int videoFrameNumber;
-  double videoFps;
-  double videoQuality;
-  int size;
-  int time;
-  double bitrate;
-  double speed;
+/// Represents an ongoing FFmpeg execution.
+class FFmpegExecution {
+  final int executionId;
+  final DateTime startTime;
+  final String command;
 
-  Statistics(this.executionId, this.videoFrameNumber, this.videoFps,
-      this.videoQuality, this.size, this.time, this.bitrate, this.speed);
+  const FFmpegExecution({
+    required this.command,
+    required this.executionId,
+    required this.startTime,
+  });
 }

@@ -17,14 +17,13 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class StreamInformation {
-  Map<dynamic, dynamic> _allProperties;
+/// Represents a completed FFmpeg execution.
+class CompletedFFmpegExecution {
+  final int executionId;
+  final int returnCode;
 
-  /// Creates a new [StreamInformation] instance
-  StreamInformation(this._allProperties);
-
-  /// Returns all properties in a map or null if no properties are found
-  Map<dynamic, dynamic> getAllProperties() {
-    return _allProperties;
-  }
+  const CompletedFFmpegExecution({
+    required this.executionId,
+    required this.returnCode,
+  });
 }

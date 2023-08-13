@@ -17,10 +17,19 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Represents a completed FFmpeg execution.
-class CompletedFFmpegExecution {
-  int executionId;
-  int returnCode;
+import 'package:flutter_ffmpeg/models/media_info.dart';
 
-  CompletedFFmpegExecution(this.executionId, this.returnCode);
+class MediaInformation {
+  final Map<dynamic, dynamic>? allInfoAsMap;
+
+  /// Creates a new [MediaInformation] instance
+  const MediaInformation(this.allInfoAsMap);
+}
+
+extension MediaInformationUtils on MediaInformation {
+  MediaInfo? get allInfo =>
+      allInfoAsMap == null ? null : MediaInfo.fromMap(allInfoAsMap!);
+  List<MIStream>? get streams => allInfo?.streams;
+  MIFormat? get formatProperties => allInfo?.format;
+  MIFormatTags? get tags => formatProperties?.tags;
 }

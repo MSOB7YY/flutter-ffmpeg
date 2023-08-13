@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 /*
  * Copyright (c) 2019 Taner Sener
  *

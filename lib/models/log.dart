@@ -18,9 +18,13 @@
  */
 
 class Log {
-  int executionId;
-  int level;
-  String message;
+  final int executionId;
+  final int level;
+  final String message;
 
-  Log(this.executionId, this.level, this.message);
+  const Log({
+    required this.executionId,
+    required this.level,
+    required this.message,
+  });
 }

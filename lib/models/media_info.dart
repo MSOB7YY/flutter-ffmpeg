@@ -358,3 +358,23 @@ extension _StringToDuration on String? {
     return dur;
   }
 }
+
+extension SreamTypeDetector on MIStream {
+  StreamType? get streamType => _streamTypes[codecType];
+}
+
+final _streamTypes = <String, StreamType>{
+  "video": StreamType.video,
+  "audio": StreamType.audio,
+  "subtitle": StreamType.subtitle,
+  "attachment": StreamType.attachment,
+  "data": StreamType.data,
+};
+
+enum StreamType {
+  video,
+  audio,
+  subtitle,
+  attachment,
+  data,
+}

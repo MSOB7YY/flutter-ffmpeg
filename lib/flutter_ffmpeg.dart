@@ -24,6 +24,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_ffmpeg/models/completed_ffmpeg_execution.dart';
 import 'package:flutter_ffmpeg/models/ffmpeg_execution.dart';
 import 'package:flutter_ffmpeg/models/log.dart';
+import 'package:flutter_ffmpeg/models/media_info.dart';
 import 'package:flutter_ffmpeg/models/media_information.dart';
 import 'package:flutter_ffmpeg/models/statistics.dart';
 
@@ -643,5 +644,11 @@ class FlutterFFprobe {
       debugPrint("Plugin getMediaInformation error: ${e.message}");
       return Future.error("getMediaInformation failed for $path.", stack);
     }
+  }
+
+  /// Same as [getMediaInformation] but returns [MediaInfo] instance.
+  Future<MediaInfo?> getAllMediaInformation(String path) async {
+    final info = await getMediaInformation(path);
+    return info.allInfo;
   }
 }

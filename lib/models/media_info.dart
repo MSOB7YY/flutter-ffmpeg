@@ -54,7 +54,7 @@ class MIFormat {
         startTime: json["start_time"],
         bitRate: json["bit_rate"],
         filename: json["filename"],
-        size: int.tryParse(json["size"]),
+        size: json["size"] == null ? null : int.tryParse(json["size"]),
         probeScore: json["probe_score"],
         nbPrograms: json["nb_programs"],
         nbStreams: json["nb_streams"],

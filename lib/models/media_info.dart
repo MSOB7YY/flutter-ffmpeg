@@ -267,8 +267,8 @@ class MIStream {
         codecName: json["codec_name"],
         tags: json["tags"] == null ? null : MIStreamTags.fromMap(json["tags"]),
         startTime: json["start_time"],
-        disposition: Map.from(json["disposition"]!)
-            .map((k, v) => MapEntry<String, int>(k, v)),
+        disposition: (json["disposition"] as Map?)
+            ?.map((k, v) => MapEntry<String, int>(k, v)),
         codecTag: json["codec_tag"],
         sampleRate: json["sample_rate"],
         channels: json["channels"],
@@ -305,8 +305,8 @@ class MIStream {
         "codec_name": codecName,
         "tags": tags?.toMap(),
         "start_time": startTime,
-        "disposition": Map.from(disposition!)
-            .map((k, v) => MapEntry<dynamic, dynamic>(k, v)),
+        "disposition":
+            disposition?.map((k, v) => MapEntry<dynamic, dynamic>(k, v)),
         "codec_tag": codecTag,
         "sample_rate": sampleRate,
         "channels": channels,

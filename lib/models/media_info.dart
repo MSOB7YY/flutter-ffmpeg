@@ -8,18 +8,15 @@ class MediaInfo {
   });
 
   factory MediaInfo.fromMap(Map<dynamic, dynamic> json) => MediaInfo(
-        streams: json["streams"] == null
-            ? []
-            : List<MIStream>.from(
-                json["streams"]!.map((x) => MIStream.fromMap(x))),
+        streams: (json["streams"] as List?)
+            ?.map((e) => MIStream.fromMap(e))
+            .toList(),
         format:
             json["format"] == null ? null : MIFormat.fromMap(json["format"]),
       );
 
   Map<dynamic, dynamic> toMap() => {
-        "streams": streams == null
-            ? []
-            : List<dynamic>.from(streams!.map((x) => x.toMap())),
+        "streams": streams?.map((e) => e.toMap()),
         "format": format?.toMap(),
       };
 }
